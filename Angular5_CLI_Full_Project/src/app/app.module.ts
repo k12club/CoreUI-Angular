@@ -3,6 +3,13 @@ import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 import { AppComponent } from './app.component';
+import { AngularFireModule } from 'angularfire2';
+// for AngularFireDatabase
+import { AngularFireDatabaseModule } from 'angularfire2/database-deprecated';
+//import { AngularFireDatabase } from 'angularfire2/database';
+// for AngularFireAuth
+import { AngularFireAuthModule } from 'angularfire2/auth';
+//import { AngularFireAuth } from 'angularfire2/auth';
 
 // Import containers
 import {
@@ -64,20 +71,36 @@ import { AppRoutingModule } from './app.routing';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { DashboardComponent } from './page/dashboard/dashboard.component';
+import { LoginComponent } from './page/login/login.component';
+import { RegisterComponent } from './page/register/register.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    ChartsModule
+    ChartsModule,
+    AngularFireModule.initializeApp({apiKey: "AIzaSyCqT_rsLQXbnRleMS2m6dMdvbHGsn_ctBY",
+    authDomain: "project-169022.firebaseapp.com",
+    databaseURL: "https://project-169022.firebaseio.com",
+    projectId: "project-169022",
+    storageBucket: "project-169022.appspot.com",
+    messagingSenderId: "1089384386922"}),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   declarations: [
     AppComponent,
+    LoginComponent,
+    RegisterComponent,
     ...APP_CONTAINERS,
     ...APP_COMPONENTS,
-    ...APP_DIRECTIVES
+    ...APP_DIRECTIVES,
+    DashboardComponent
   ],
   providers: [{
     provide: LocationStrategy,
