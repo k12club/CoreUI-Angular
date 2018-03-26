@@ -8,6 +8,7 @@ import {
 } from './containers';
 import { LoginComponent } from './page/login/login.component';
 import { RegisterComponent } from './page/register/register.component';
+import { DashboardComponent } from './page/dashboard/dashboard.component';
 
 export const routes: Routes = [
   {
@@ -37,7 +38,7 @@ export const routes: Routes = [
   ,
   {
     path: 'dashboard',
-    component: LoginComponent,
+    component: DashboardComponent,
     data: {
       title: 'Dashboard'
     }
